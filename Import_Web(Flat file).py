@@ -1,5 +1,5 @@
 """ 
-(1) How to Import/Download an online flatfile in Python
+(1) Import/Download an online flatfile in Python
     Task: import a file from the web, save it locally and load it into a DataFrame 
 """
 
@@ -20,7 +20,7 @@ print(df.head())
 
 """
 (2) Opening and reading flat files from the web
-Task: load a file from the web into a DataFrame without first saving it locally, you can do that easily using pandas. 
+Task: load a file from the web into a DataFrame without first saving it locally.
 """
 
 # Packages
@@ -44,3 +44,29 @@ pd.DataFrame.hist(df.ix[:, 0:1])
 plt.xlabel('fixed acidity (g(tartaric acid)/dm$^3$)')
 plt.ylabel('count')
 plt.show()
+
+
+"""
+(3) Importing non-flat files (Excel) from the web
+    Task: 
+    Note: (a) in order to import all sheets you need to pass None to the argument 'sheetname'
+    (b) the output of pd.read_excel() is a Python dictionary with 
+    sheet names as keys and 
+    corresponding DataFrames as corresponding values.
+"""
+
+# Import package
+import pandas as pd
+
+# Assign url of file: url
+url = 'http://s3.amazonaws.com/assets.datacamp.com/course/importing_data_into_r/latitude.xls'
+
+# Read in all sheets of Excel file: xl
+xl = pd.read_excel(url,sheetname = None )
+
+# Print the sheetnames to the shell
+print(xl.keys())
+
+# Print the head of the first sheet (using its name, NOT its index)
+print(xl['1900'].head())
+

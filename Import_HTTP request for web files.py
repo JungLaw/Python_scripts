@@ -10,24 +10,28 @@ from urllib.request import urlopen, Request
 # Specify the url
 url = "http://www.datacamp.com/teach/documentation"
 
-# This packages the request: request
+# Package the GET request to the url using Request()
 request = Request(url)
 
-# Sends the request and catches the response: response
+# Send request and catch the response in the variable 'response' with the function urlopen().
 response = urlopen(request)
 
 # Print the datatype of response
-print(type(response))
+print(type(response))           # OUTPUT: <class 'http.client.HTTPResponse'>
 
 # Close the response!
 response.close()
 
-# <class 'http.client.HTTPResponse'>
+
 
 
 """
 (2) Printing HTTP request results in Python using urllib
   Task: 
+  - Send the request and catch the response in the variable response with the function urlopen().
+  - Extract the response using the read() method and store the result in the variable html.
+  - Print the string html.
+  - Hit submit to perform all of the above and to close the response
   
 """
 
@@ -44,15 +48,22 @@ request = Request(url)
 response = urlopen(request)
 
 # Extract the response: html
-html = response.read()
+html = response.read()      # Returns the html as a string
 
 # Print the html
 print(html)
 
+# Close the response
+response.close()
+
+
+
 
 """
 (3) Performing HTTP requests in Python using 'requests'
-  Task: 
+  NOTE: 'requests' requires less code than 'urlopen'; don't have to close out
+        the output is more reader-friendly
+ 
   
 """
 
